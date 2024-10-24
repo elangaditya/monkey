@@ -43,7 +43,6 @@ func (p *Parser) ParseProgram() *ast.Program {
 		stmt := p.parseStatement()
 		if stmt != nil {
 			program.Statements = append(program.Statements, stmt)
-      fmt.Printf("%+v\n", stmt)
 		}
 		p.nextToken()
 	}
