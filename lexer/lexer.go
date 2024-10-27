@@ -70,13 +70,6 @@ func (l *Lexer) NextToken() token.Token {
 			tok = newToken(token.BANG, l.ch)
 		}
 	case '-':
-    if isDigit(l.peekChar()) {
-      ch := l.ch
-      tok.Type = token.INT
-      l.readChar()
-      tok.Literal = string(ch) + l.readNumber()
-      return tok
-    }
 		tok = newToken(token.MINUS, l.ch)
 	case '/':
 		tok = newToken(token.SLASH, l.ch)
