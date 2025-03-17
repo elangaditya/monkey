@@ -146,15 +146,44 @@ func TestIdentifierExpression(t *testing.T) {
 	if !ok {
 		t.Fatalf("program.Statements[0] is not ast.ExpressionStatement. got=%T", program.Statements[0])
 	}
-	ident, ok := stmt.Expression.(*ast.Identifier)
-	if !ok {
-		t.Fatalf("exp not *ast.Identifier. got=%T", stmt.Expression)
+
+	if !testIdentifier(t, stmt.Expression, "foobar") {
+		return
 	}
-	if ident.Value != "foobar" {
-		t.Errorf("ident.Value not %s. got=%s", "foobar", ident.Value)
+}
+
+func TestBooleanExpression(t *testing.T) {
+	tests := []struct {
+		input        string
+		expectedBool bool
+	}{
+		{"true", true},
+		{"false", false},
 	}
-	if ident.TokenLiteral() != "foobar" {
-		t.Errorf("ident.TokenLiteral not %s. got=%s", "foobar", ident.TokenLiteral())
+
+	for _, tt := range tests {
+		l := lexer.New(tt.input)
+		p := New(l)
+		program := p.ParseProgram()
+		checkParseErrors(t, p)
+
+		if len(program.Statements) != 1 {
+			t.Fatalf("program length incorrect. got=%d", len(program.Statements))
+		}
+
+		stmt, ok := program.Statements[0].(*ast.ExpressionStatement)
+		if !ok {
+			t.Fatalf("program.Statements[0] is not and *ast.ExpressionStatement. got=%T", program.Statements[0])
+		}
+
+		boolean, ok := stmt.Expression.(*ast.Boolean)
+		if !ok {
+			t.Fatalf("exp not *ast.Boolean. got=%T", stmt.Expression)
+		}
+
+		if boolean.Value != tt.expectedBool {
+			t.Errorf("boolean.Value not %t. got=%t", tt.expectedBool, boolean.Value)
+		}
 	}
 }
 
@@ -235,10 +264,6 @@ func TestParsingPrefixExpressions(t *testing.T) {
 		p := New(l)
 		program := p.ParseProgram()
 		checkParseErrors(t, p)
-
-		for _, each := range program.Statements {
-			fmt.Println(each.String())
-		}
 
 		if len(program.Statements) != 1 {
 			t.Fatalf("program.Statements does not contain %d statements. got=%d\n", 1, len(program.Statements))
@@ -403,7 +428,6 @@ func TestOperatorPrecedenceParsing(t *testing.T) {
 		program := p.ParseProgram()
 		checkParseErrors(t, p)
 		actual := program.String()
-		t.Log(actual)
 		if actual != tt.expected {
 			t.Errorf("expected=%q, got=%q", tt.expected, actual)
 		}
