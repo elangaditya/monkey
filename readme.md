@@ -11,7 +11,7 @@ This is my working repository for learning the basics of interpreters and (hopef
     - [x] Expressions
     - [ ] Other extensions
         - [x] Booleans
-        - [ ] Group expressions
+        - [x] Group expressions
         - [ ] Conditionals
         - [ ] Functions & Calls
     - [ ] REPL
