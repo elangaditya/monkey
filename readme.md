@@ -9,9 +9,9 @@ This is my working repository for learning the basics of interpreters and (hopef
     - [x] Let Statements
     - [x] Return Statements
     - [x] Expressions
-    - [ ] Other extensions
+    - [x] Other extensions
         - [x] Booleans
         - [x] Group expressions
         - [x] Conditionals
-        - [ ] Functions & Calls
+        - [x] Functions & Calls
     - [ ] REPL
