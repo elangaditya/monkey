@@ -3,6 +3,7 @@ package ast
 import (
 	"bytes"
 	"monkey/token"
+	"strings"
 )
 
 type Node interface {
@@ -55,7 +56,7 @@ func (i *Identifier) String() string { return i.Value }
 // Structure: let <identifier> = <expression>
 type LetStatement struct {
 	Token token.Token
-  Name  *Identifier // q?: why use pointers here
+	Name  *Identifier // q?: why use pointers here
 	Value Expression
 }
 
@@ -177,7 +178,7 @@ func (b *Boolean) String() string       { return b.Token.Literal }
 type IfExpression struct {
 	Token       token.Token // 'if'
 	Condition   Expression
-  Consequence *BlockStatement // q?: why use pointers here
+	Consequence *BlockStatement // q?: why use pointers here
 	Alternative *BlockStatement
 }
 
@@ -212,6 +213,32 @@ func (bs *BlockStatement) String() string {
 	for _, s := range bs.Statements {
 		out.WriteString(s.String())
 	}
+
+	return out.String()
+}
+
+// fn <parameter> <block statement>
+type FunctionLiteral struct {
+	Token      token.Token // 'fn' Token
+	Parameters []*Identifier
+	Body       *BlockStatement
+}
+
+func (fl *FunctionLiteral) expressionNode()      {}
+func (fl *FunctionLiteral) TokenLiteral() string { return fl.Token.Literal }
+func (fl *FunctionLiteral) String() string {
+	var out bytes.Buffer
+
+	params := []string{}
+	for _, p := range fl.Parameters {
+		params = append(params, p.String())
+	}
+
+	out.WriteString(fl.TokenLiteral())
+	out.WriteString("(")
+	out.WriteString(strings.Join(params, ", "))
+	out.WriteString(") ")
+	out.WriteString(fl.Body.String())
 
 	return out.String()
 }
