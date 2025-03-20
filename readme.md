@@ -5,7 +5,7 @@ This is my working repository for learning the basics of interpreters and (hopef
 ## Main To Do:
 
 - [x] Implement Lexer
-- [ ] Implement Parser
+- [x] Implement Parser
     - [x] Let Statements
     - [x] Return Statements
     - [x] Expressions
@@ -14,4 +14,13 @@ This is my working repository for learning the basics of interpreters and (hopef
         - [x] Group expressions
         - [x] Conditionals
         - [x] Functions & Calls
-    - [ ] REPL
+    - [x] REPL
+- [ ] Implement Evaluation
+    - [x] Implement object system
+        - [x] Integer
+        - [x] Boolean
+        - [ ] Null
+    - [ ] Evaluate Expressions
+    - [ ] Conditionals
+    - ...
+
