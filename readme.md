@@ -19,8 +19,12 @@ This is my working repository for learning the basics of interpreters and (hopef
     - [x] Implement object system
         - [x] Integer
         - [x] Boolean
-        - [ ] Null
-    - [ ] Evaluate Expressions
-    - [ ] Conditionals
-    - ...
+        - [x] Null
+    - [x] Evaluate Expressions
+    - [x] Conditionals
+    - [x] Return statements
+    - [ ] Error handling
+    - [ ] Bindings & Environment
+    - [ ] Functions & Calls
+    - [ ] GC
 
