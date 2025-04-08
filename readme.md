@@ -15,7 +15,7 @@ This is my working repository for learning the basics of interpreters and (hopef
         - [x] Conditionals
         - [x] Functions & Calls
     - [x] REPL
-- [ ] Implement Evaluation
+- [x] Implement Evaluation
     - [x] Implement object system
         - [x] Integer
         - [x] Boolean
@@ -23,8 +23,8 @@ This is my working repository for learning the basics of interpreters and (hopef
     - [x] Evaluate Expressions
     - [x] Conditionals
     - [x] Return statements
-    - [ ] Error handling
-    - [ ] Bindings & Environment
-    - [ ] Functions & Calls
-    - [ ] GC
+    - [x] Error handling
+    - [x] Bindings & Environment
+    - [x] Functions & Calls
+    - [x] GC
 
