@@ -1,8 +1,9 @@
 package lexer
 
 import (
-	"monkey/token"
 	"testing"
+
+	"monkey/token"
 )
 
 func TestNextToken(t *testing.T) {
@@ -29,11 +30,21 @@ func TestNextToken(t *testing.T) {
 		tok := l.NextToken()
 
 		if tok.Type != tt.expectedType {
-			t.Fatalf("tests[%d] - tokentype wrong. expected=%q, got=%q", i, tt.expectedType, tok.Type)
+			t.Fatalf(
+				"tests[%d] - tokentype wrong. expected=%q, got=%q",
+				i,
+				tt.expectedType,
+				tok.Type,
+			)
 		}
 
 		if tok.Literal != tt.expectedLiteral {
-			t.Fatalf("tests[%d] - literal wrong. expected=%q, got=%q", i, tt.expectedLiteral, tok.Literal)
+			t.Fatalf(
+				"tests[%d] - literal wrong. expected=%q, got=%q",
+				i,
+				tt.expectedLiteral,
+				tok.Literal,
+			)
 		}
 	}
 }
@@ -158,11 +169,21 @@ func TestNextToken2(t *testing.T) {
 		tok := l.NextToken()
 
 		if tok.Type != tt.expectedType {
-			t.Fatalf("tests[%d] - tokentype wrong. expected=%q, got=%q", i, tt.expectedType, tok.Type)
+			t.Fatalf(
+				"tests[%d] - tokentype wrong. expected=%q, got=%q",
+				i,
+				tt.expectedType,
+				tok.Type,
+			)
 		}
 
 		if tok.Literal != tt.expectedLiteral {
-			t.Fatalf("tests[%d] - literal wrong. expected=%q, got=%q", i, tt.expectedLiteral, tok.Literal)
+			t.Fatalf(
+				"tests[%d] - literal wrong. expected=%q, got=%q",
+				i,
+				tt.expectedLiteral,
+				tok.Literal,
+			)
 		}
 	}
 }

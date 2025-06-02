@@ -2,10 +2,11 @@ package evaluator
 
 import (
 	"fmt"
+	"testing"
+
 	"monkey/lexer"
 	"monkey/object"
 	"monkey/parser"
-	"testing"
 )
 
 func testEval(input string) object.Object {
